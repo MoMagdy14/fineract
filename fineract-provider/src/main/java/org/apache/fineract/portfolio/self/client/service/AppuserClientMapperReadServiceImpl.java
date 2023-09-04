@@ -18,6 +18,7 @@
  */
 package org.apache.fineract.portfolio.self.client.service;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.fineract.infrastructure.security.service.PlatformSecurityContext;
 import org.apache.fineract.portfolio.client.exception.ClientNotFoundException;
 import org.apache.fineract.useradministration.domain.AppUser;
@@ -25,17 +26,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-@Service
+@RequiredArgsConstructor
 public class AppuserClientMapperReadServiceImpl implements AppuserClientMapperReadService {
 
     private final JdbcTemplate jdbcTemplate;
     private final PlatformSecurityContext context;
 
-    @Autowired
-    public AppuserClientMapperReadServiceImpl(final JdbcTemplate jdbcTemplate, final PlatformSecurityContext context) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.context = context;
-    }
 
     @Override
     public Boolean isClientMappedToUser(Long clientId, Long appUserId) {
